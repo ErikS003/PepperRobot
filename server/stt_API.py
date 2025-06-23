@@ -7,9 +7,12 @@ from huggingface_hub import InferenceApi,InferenceClient
 import time
 import io
 import uvicorn
+import torch
 
 app = FastAPI(title="speech_to_text")
-model = WhisperModel("tiny", device="cpu", compute_type="int8")
+CUDA=torch.cuda.is_available()
+device= "cuda" if CUDA else "cpu"
+model = WhisperModel("tiny", device=device, compute_type="int8")
 batched_model = BatchedInferencePipeline(model=model)
 
 #inference sample
