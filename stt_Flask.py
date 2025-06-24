@@ -12,7 +12,7 @@ app = FastAPI(title="speech_to_text")
 model = WhisperModel("small", device="cpu", compute_type="int8")
 
 #inference sample
-HF_TOKEN = "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"
+HF_TOKEN = "YOUR_KEY"
 client = InferenceClient(
     provider="hf-inference",
     api_key=HF_TOKEN,
