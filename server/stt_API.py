@@ -22,7 +22,8 @@ client = InferenceClient(
     api_key=HF_TOKEN,
 )
 
-
+ID = 0
+history = {}
 @app.post("/transcribe")
 
 async def transcribe(request: Request, audio: UploadFile):
@@ -44,16 +45,31 @@ async def transcribe(request: Request, audio: UploadFile):
     t22=time.time() # time for transcription
     print("time for STT transcription: ", t22-t21)
     t31=time.time()
-    completion = client.chat.completions.create(
-    model="mistralai/Mistral-7B-Instruct-v0.3",
-    messages=[
-        {
-            "role": "user",
-            "content": f"{prompt}"
-        }
-    ],
-    )
+
+    if ID==0:
+
+        completion = client.chat.completions.create(
+        model="google/gemma-3-27b-it",
+        messages=[
+            {
+                "role": "user",
+                "content": f"{pre_prompt+prompt}"
+            }
+        ],
+        )
+    else:
+        completion = client.chat.completions.create(
+        model="google/gemma-3-27b-it",
+        messages=[
+            {
+                "role": "user",
+                "content": f"Here is some history of your conversation:{history[ID-1]}. Do not repeat yourself too much. Remember to answer the prompt short and consise. Remember You are acting as 'Pepper' NOT Gemma. {prompt}"
+            }
+        ],
+        )
     answer= completion.choices[0].message
+    history[ID]=f"prompt: {text}, answer:{answer}"
+    ID+=1
     t32 = time.time() #time for llm answer
     print(answer)
     return JSONResponse({
