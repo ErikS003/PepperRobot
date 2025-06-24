@@ -16,7 +16,7 @@ model = WhisperModel("tiny", device=device, compute_type="int8")
 batched_model = BatchedInferencePipeline(model=model)
 
 #inference sample
-HF_TOKEN = "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"
+HF_TOKEN = "YOUR_KEY"
 client = InferenceClient(
     provider="hf-inference",
     api_key=HF_TOKEN,
