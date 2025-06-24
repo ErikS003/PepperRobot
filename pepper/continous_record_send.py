@@ -50,7 +50,7 @@ format(sys.argv[0]))
         record_audio(ip, 9559, outpath, dur)
 
         start_time = time.time()
-        url = "http://1516-192-176-1-79.ngrok-free.app/transcribe"
+        url = "http://7969-192-71-49-53.ngrok-free.app/transcribe"
 
         files = {
             "audio": (

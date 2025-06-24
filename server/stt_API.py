@@ -58,8 +58,10 @@ async def transcribe(request: Request, audio: UploadFile):
     print(answer)
     return JSONResponse({
         "answer": answer,
+        "text": text,
         "times": [round(t12-t11,10), round(t22-t21,3), round(t32-t31,3)]
     })
+
 if __name__ == "__main__":
     # listen on all interfaces
     import uvicorn
