@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="styles.css">
+    <title>Pepper display</title>
+</head>
+<body>
+    <h1>Chat history</h1>
+    <div class="box">
+        <div class="chat">
+            <p><strong>You:</strong> Hello, how are you?</p>
+            <p><strong>Pepper:</strong> I'm just a robot, but I'm here to help!</p>
+            <p><strong>You:</strong> Can you tell me a joke?</p>
+            <p><strong>Pepper:</strong> Sure! What do you call a robot that always takes the long way around? R2-Detour!</p>
+        </div>
+    </div>
+</body>
+</html>
+
+<!-- 
+To integrate with Pepper script:
+
+1. pip install jinja2
+2. import HTMLResponse from fastapi.responses & Jinja2Templates from fastapi.templating
+3. Make sure the file structure looks correct (main program->templates directory->HTML file)
+3. write this in the main program: templates = Jinja2Templates(directory="templates")
+4. generate the text in the main program
+5. write this in the main program: 
+@app.get("/", response_class=HTMLResponse)
+async def read_root(request: Request):
+    text = #the function that generates the text
+    return templates.TemplateResponse("index.html", {"request": request, "text": text})
+6. write {{ text }} in the HTML file where you want it to be
+7. run the uvicorn app
+-->

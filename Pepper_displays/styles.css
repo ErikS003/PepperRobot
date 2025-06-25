@@ -1,0 +1,22 @@
+body {
+  background-color: powderblue;
+}
+h1 {
+  color: black;
+}
+p {
+  color: darkblue;
+}
+.chat {
+    text-align: left;
+    padding: 20px;
+}
+.box {
+    height: px;
+    background-color: lightblue;
+    border: 5px solid black;
+    border-radius: 15px;
+    color: maroon;
+    padding: 10px 50px 30px 0;
+    margin: 10px 50px 20px 0;
+} 
