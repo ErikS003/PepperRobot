@@ -1,10 +1,8 @@
-
-test_send.py
 import time
 import requests
 
 start_time = time.time()
-url = "http://1516-192-176-1-79.ngrok-free.app/transcribe"
+url = "http://e687-192-71-49-53.ngrok-free.app/transcribe"
 
 files = {
     "audio": (
